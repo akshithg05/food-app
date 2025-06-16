@@ -6,8 +6,12 @@ export default function About() {
     <div>
       <h1>This is the demo food application</h1>
       <h2>We are small little brand making baby steps in the food industry.</h2>
-      <User name={"Akshith Gunasheelan"} />
-      <UserClass name={"Akshith Gunasheelan"} />
+      {/*<User name={"Akshith Gunasheelan"} />*/}
+      <UserClass
+        name={"Akshith Gunasheelan"}
+        location={"Bangalore"}
+        social={"@aks__g"}
+      />
     </div>
   );
 }
