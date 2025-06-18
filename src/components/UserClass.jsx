@@ -2,49 +2,57 @@ import React from "react";
 
 class UserClass extends React.Component {
   constructor(props) {
-    console.log("Child constructor");
     super(props);
     this.state = {
-      count: 0,
-      count2: 0,
+      error: "",
+      userData: {},
+      isLoading: false,
     };
   }
 
-  componentDidMount() {
-    console.log(this.props.id + " Child componentDidMount");
+  async componentDidMount() {
+    try {
+      this.setState({
+        isLoading: true,
+      });
+      const userDetails = await fetch(
+        "https://api.github.com/users/akshithg05"
+      );
+      const userDetailsJson = await userDetails.json();
+      this.setState({
+        userData: userDetailsJson,
+      });
+    } catch (err) {
+      this.setState({
+        error: err,
+      });
+      console.log(err);
+    } finally {
+      this.setState({
+        isLoading: false,
+      });
+    }
   }
+
+  componentDidUpdate() {
+    console.log("Component updated!");
+  }
+
   render() {
-    console.log("Child render");
-    const { name, location, social } = this.props;
-    const { count, count2 } = this.state;
+    const { isLoading, userData } = this.state;
+    const { name, location, avatar_url } = userData;
 
     return (
       <div className="user-card">
-        <h1>Count: {count}</h1>
+        <h2>Name: {isLoading ? "Loading..." : name}</h2>
+        <h3>Location: {isLoading ? "Loading..." : location}</h3>
         <div>
-          <button
-            onClick={() => {
-              // NEVER UPDATE STATE VARS DIRECTLY
-              this.setState({
-                count: this.state.count + 1,
-              });
-            }}
-          >
-            Increase count
-          </button>
-          <button
-            onClick={() => {
-              this.setState({
-                count: this.state.count - 1,
-              });
-            }}
-          >
-            Decrease count
-          </button>
+          <h4>Avatar:</h4>
+          <img
+            className="user-image"
+            src={isLoading ? "Loading..." : avatar_url}
+          />
         </div>
-        <h2>Name: {name}</h2>
-        <h3>Location: {location}</h3>
-        <h4>Instagram: {social}</h4>
       </div>
     );
   }

@@ -90,3 +90,9 @@
   border: 1px solid black;
   width: 25vw;
 }
+
+.user-image {
+  display: flex;
+  flex-wrap: wrap;
+  height: 25vh;
+}
