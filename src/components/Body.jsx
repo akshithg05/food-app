@@ -3,11 +3,13 @@ import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { SWIGGY_API, PROXY_URL } from "../utils/constants";
 import { Link } from "react-router";
+import useOnlineStatus from "../hooks/useOnlineStatus";
 
 const Body = () => {
   const [allRestaurants, setAllRestaurants] = useState([]);
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   const [searchText, setSearchText] = useState("");
+  const onlineStatus = useOnlineStatus();
 
   useEffect(() => {
     fetchData();
@@ -30,64 +32,72 @@ const Body = () => {
   }
 
   return (
-    <div className="body">
-      <div>
-        <input
-          type="Search"
-          onChange={(e) => {
-            setSearchText(e.target.value);
-          }}
-          value={searchText}
-        />
-        <button
-          className="filter-btn"
-          onClick={() => {
-            // console.log(listOfRestaurants[0].info.name);
-            searchText.length !== 0
-              ? setListOfRestaurants(
-                  allRestaurants.filter((res) =>
-                    res?.info?.name
-                      ?.toLowerCase()
-                      ?.includes(searchText?.toLowerCase())
-                  )
-                )
-              : setListOfRestaurants(allRestaurants);
-          }}
-        >
-          Search
-        </button>
-
-        <button
-          className="filter-btn"
-          onClick={() => {
-            // callback function which will be clicked on click
-            setListOfRestaurants(
-              listOfRestaurants.filter((res) => res.info.avgRating > 4.5)
-            );
-          }}
-        >
-          Top rated restaurants (&gt; 4.5 stars)
-        </button>
-        <button onClick={() => setListOfRestaurants(allRestaurants)}>
-          Clear filter
-        </button>
-      </div>
-      {listOfRestaurants.length === 0 ? (
-        <Shimmer />
+    <>
+      {!onlineStatus ? (
+        <div>
+          <h1> Uh oh! Looks like you are offline</h1>
+        </div>
       ) : (
-        <div className="res-container">
-          {listOfRestaurants.map((res) => (
-            <Link
-              className="restaurant-link"
-              key={res?.info?.id}
-              to={`/restaurants/${res?.info?.id}`}
+        <div className="body">
+          <div>
+            <input
+              type="Search"
+              onChange={(e) => {
+                setSearchText(e.target.value);
+              }}
+              value={searchText}
+            />
+            <button
+              className="filter-btn"
+              onClick={() => {
+                // console.log(listOfRestaurants[0].info.name);
+                searchText.length !== 0
+                  ? setListOfRestaurants(
+                      allRestaurants.filter((res) =>
+                        res?.info?.name
+                          ?.toLowerCase()
+                          ?.includes(searchText?.toLowerCase())
+                      )
+                    )
+                  : setListOfRestaurants(allRestaurants);
+              }}
             >
-              <RestaurantCard key={res?.info?.id} resData={res} />
-            </Link>
-          ))}
+              Search
+            </button>
+
+            <button
+              className="filter-btn"
+              onClick={() => {
+                // callback function which will be clicked on click
+                setListOfRestaurants(
+                  listOfRestaurants.filter((res) => res.info.avgRating > 4.5)
+                );
+              }}
+            >
+              Top rated restaurants (&gt; 4.5 stars)
+            </button>
+            <button onClick={() => setListOfRestaurants(allRestaurants)}>
+              Clear filter
+            </button>
+          </div>
+          {listOfRestaurants.length === 0 ? (
+            <Shimmer />
+          ) : (
+            <div className="res-container">
+              {listOfRestaurants.map((res) => (
+                <Link
+                  className="restaurant-link"
+                  key={res?.info?.id}
+                  to={`/restaurants/${res?.info?.id}`}
+                >
+                  <RestaurantCard key={res?.info?.id} resData={res} />
+                </Link>
+              ))}
+            </div>
+          )}
         </div>
       )}
-    </div>
+    </>
   );
 };
 
