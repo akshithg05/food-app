@@ -1,32 +1,15 @@
-import { useState, useEffect, use } from "react";
-import { PROXY_URL } from "../utils/constants";
+import { useState } from "react";
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router";
-import { getMenuUrl } from "../utils/constants";
+import useRestaurantMenu from "../hooks/useRestaurantMenu";
 
 export default function RestaurantMenuPage() {
-  const [isLoading, setLoading] = useState(false);
-  const [data, setData] = useState({});
   const [vegOnly, setVegOnly] = useState(false);
+
   const { resId } = useParams();
 
-  useEffect(() => {
-    fetchMenu();
-  }, []);
+  const { isLoading, data } = useRestaurantMenu(resId);
 
-  async function fetchMenu() {
-    try {
-      setLoading(true);
-      const menu = await fetch(PROXY_URL + getMenuUrl(resId));
-
-      const menuJson = await menu.json();
-      setData(menuJson);
-    } catch (err) {
-      console.log(err);
-    } finally {
-      setLoading(false);
-    }
-  }
   const { name, costForTwoMessage, cuisines, cloudinaryImageId } =
     data?.data?.cards[2]?.card?.card?.info || {};
 
@@ -37,10 +20,6 @@ export default function RestaurantMenuPage() {
   const classics =
     data?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[5]?.card
       ?.card?.itemCards;
-
-  console.log(
-    data?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[5]
-  );
 
   return (
     <div className="menu">
