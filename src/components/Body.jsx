@@ -41,14 +41,16 @@ const Body = () => {
         <div className="body">
           <div>
             <input
+              className="m-2 p-2 max-w-md border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400 shadow-sm transition duration-200"
               type="Search"
+              placeholder="Search..."
               onChange={(e) => {
                 setSearchText(e.target.value);
               }}
               value={searchText}
             />
             <button
-              className="filter-btn"
+              className="m-2 px-4 py-2 bg-pink-500 text-white rounded hover:bg-pink-600 transition"
               onClick={() => {
                 // console.log(listOfRestaurants[0].info.name);
                 searchText.length !== 0
@@ -66,7 +68,7 @@ const Body = () => {
             </button>
 
             <button
-              className="filter-btn"
+              className="m-2 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 transition"
               onClick={() => {
                 // callback function which will be clicked on click
                 setListOfRestaurants(
@@ -76,7 +78,10 @@ const Body = () => {
             >
               Top rated restaurants (&gt; 4.5 stars)
             </button>
-            <button onClick={() => setListOfRestaurants(allRestaurants)}>
+            <button
+              className="m-2 px-4 py-2 bg-gray-300 text-black rounded hover:bg-gray-400 transition"
+              onClick={() => setListOfRestaurants(allRestaurants)}
+            >
               Clear filter
             </button>
           </div>

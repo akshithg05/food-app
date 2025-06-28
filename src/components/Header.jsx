@@ -7,27 +7,32 @@ const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const isOnline = useOnlineStatus();
   return (
-    <div className="header">
+    <div className="flex justify-between bg-pink-100 shadow-lg">
       <div className="logo-container">
-        <img className="logo" src={LOGO_URL} alt="logo" />
+        <img className="w-30" src={LOGO_URL} alt="logo" />
       </div>
-      <div className="nav-items">
-        <ul>
-          <li>Online Status: {isOnline ? "🟢" : "🔴"}</li>
-          <li>
-            <Link to="/grocery">Grocery</Link>
+      <div className="flex pt-2">
+        <ul className="flex p-4 m-4 text-lg gap-4">
+          <li className=" flex items-center justify-center">
+            Online Status: {isOnline ? "🟢" : "🔴"}
           </li>
-          <li>
+          
+          <li className="hover:bg-pink-300 rounded-lg flex items-center justify-center">
             <Link to="/">Home</Link>
           </li>
-          <li>
+          <li className="hover:bg-pink-300 rounded-lg flex items-center justify-center">
+            <Link to="/grocery">Grocery</Link>
+          </li>
+          <li className="hover:bg-pink-300 rounded-lg flex items-center justify-center">
             <Link to="/about">About us</Link>
           </li>
-          <li>
+          <li className="hover:bg-pink-300 rounded-lg flex items-center justify-center">
             <Link to="/contact">Contact us</Link>
           </li>
-          <li>Cart</li>
-          <li>
+          <li className="hover:bg-pink-300 rounded-lg flex items-center justify-center">
+            Cart
+          </li>
+          <li className="hover:bg-pink-300 rounded-lg flex items-center justify-center">
             <button onClick={() => setIsLoggedIn(!isLoggedIn)}>
               {isLoggedIn ? "Logout" : "Login"}
             </button>
