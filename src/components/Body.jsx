@@ -38,10 +38,10 @@ const Body = () => {
           <h1> Uh oh! Looks like you are offline</h1>
         </div>
       ) : (
-        <div className="body">
-          <div>
+        <div>
+          <div className=" px-3 mx-18 pt-5">
             <input
-              className="m-2 p-2 max-w-md border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400 shadow-sm transition duration-200"
+              className="m-2 p-2  max-w-md border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400 shadow-sm transition duration-200"
               type="Search"
               placeholder="Search..."
               onChange={(e) => {
@@ -88,7 +88,7 @@ const Body = () => {
           {listOfRestaurants.length === 0 ? (
             <Shimmer />
           ) : (
-            <div className="res-container">
+            <div className="flex flex-wrap px-5 mx-15">
               {listOfRestaurants.map((res) => (
                 <Link
                   className="restaurant-link"
