@@ -1,4 +1,4 @@
-import RestaurantCard from "./RestaurantCard";
+import { RestaurantCard, withLabelRestaurantCard } from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { SWIGGY_API, PROXY_URL } from "../utils/constants";
@@ -10,6 +10,8 @@ const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   const [searchText, setSearchText] = useState("");
   const onlineStatus = useOnlineStatus();
+
+  const RestaurantCardLabel = withLabelRestaurantCard(RestaurantCard);
 
   useEffect(() => {
     fetchData();
@@ -95,7 +97,11 @@ const Body = () => {
                   key={res?.info?.id}
                   to={`/restaurants/${res?.info?.id}`}
                 >
-                  <RestaurantCard key={res?.info?.id} resData={res} />
+                  {res.info.avgRating > 4.5 ? (
+                    <RestaurantCardLabel key={res?.info?.id} resData={res} />
+                  ) : (
+                    <RestaurantCard key={res?.info?.id} resData={res} />
+                  )}
                 </Link>
               ))}
             </div>
