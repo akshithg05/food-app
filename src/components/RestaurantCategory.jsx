@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
+import FoodItem from "./FoodItem";
 
-export default function RestaurantCategory({ category, vegOnly }) {
+export default function RestaurantCategory({ category, vegOnly, index }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const allItems = category?.card?.card?.itemCards || [];
@@ -13,7 +14,7 @@ export default function RestaurantCategory({ category, vegOnly }) {
   if (!filteredItems.length) return null;
 
   return (
-    <div className="my-3">
+    <div className=" rounded-2xl m-3 shadow-xl">
       <button className="w-full text-left" onClick={() => setIsOpen(!isOpen)}>
         <div className="py-4 px-2 bg-gray-200 rounded-2xl  hover:bg-gray-300 transition cursor-pointer">
           <div className="flex items-center justify-between">
@@ -29,23 +30,17 @@ export default function RestaurantCategory({ category, vegOnly }) {
           </div>
         </div>
       </button>
-      {isOpen && (
-        <ul>
-          {filteredItems.map((foodItem) => (
-            <li
-              className="py-1 px-2 justify-between flex"
-              key={foodItem?.card?.info?.id}
-            >
-              <p>{foodItem?.card?.info?.name}</p>
-              <p>
-                {"  ₹  "}
-                {parseInt(foodItem?.card?.info?.price) / 100 ||
-                  parseInt(foodItem?.card?.info?.defaultPrice) / 100}
-              </p>
-            </li>
-          ))}
-        </ul>
-      )}
+      <div className="bg-gray-100 rounded-2xl">
+        {isOpen && (
+          <ul>
+            {filteredItems.map((foodItem) => (
+              <li className="px-2" key={foodItem?.card?.info?.id}>
+                <FoodItem foodItem={foodItem} />
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
     </div>
   );
 }

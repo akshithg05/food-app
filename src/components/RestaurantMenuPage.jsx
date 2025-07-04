@@ -54,6 +54,7 @@ export default function RestaurantMenuPage() {
               return (
                 <RestaurantCategory
                   key={index}
+                  index={index}
                   vegOnly={vegOnly}
                   category={category}
                 />
