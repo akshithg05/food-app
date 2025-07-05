@@ -2,6 +2,7 @@ import { CDN_URL } from "../utils/constants";
 
 export const RestaurantCard = (props) => {
   const { resData } = props;
+  // const { loggedInUser } = useContext(UserContext);
   const {
     name,
     costForTwo,
@@ -18,6 +19,7 @@ export const RestaurantCard = (props) => {
       <h4>{cuisines.join(" ")}</h4>
       <h4>Rating: {avgRatingString}</h4>
       <h4>{sla?.deliveryTime} minutes</h4>
+      {/* <h4>{loggedInUser}</h4> */}
     </div>
   );
 };

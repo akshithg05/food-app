@@ -5,16 +5,36 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router";
 import Contact from "./components/Contact";
 import Error from "./components/Error";
 import RestaurantMenuPage from "./components/RestaurantMenuPage";
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect, useState, useContext } from "react";
 import Shimmer from "./components/Shimmer";
+import UserContext from "./context/UserContext";
 
 const AppLayout = () => {
+  const { loggedInUser } = useContext(UserContext);
+  const [userName, setUserName] = useState(loggedInUser);
+
+  async function fetchUserName() {
+    try {
+      // Dummy API call
+      // const data = await fetch('fetchuserNameApi')
+      const data = {
+        name: "Akshith Gunasheelan",
+      };
+      setUserName(data?.name);
+    } catch (err) {}
+  }
+  useEffect(() => {
+    fetchUserName();
+  }, []);
+
   return (
-    <>
-      <Header />
-      <Outlet />{" "}
-      {/*  This will be replaced by the children of the AppLayout based on the path*/}
-    </>
+    <UserContext.Provider value={{ loggedInUser: userName , setUserName}}>
+      <>
+        <Header />
+        <Outlet />{" "}
+        {/*  This will be replaced by the children of the AppLayout based on the path*/}
+      </>
+    </UserContext.Provider>
   );
 };
 

@@ -1,14 +1,17 @@
 import { RestaurantCard, withLabelRestaurantCard } from "./RestaurantCard";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Shimmer from "./Shimmer";
 import { SWIGGY_API, PROXY_URL } from "../utils/constants";
 import { Link } from "react-router";
 import useOnlineStatus from "../hooks/useOnlineStatus";
+import UserContext from "../context/UserContext";
 
 const Body = () => {
+  const { loggedInUser, setUserName } = useContext(UserContext);
   const [allRestaurants, setAllRestaurants] = useState([]);
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   const [searchText, setSearchText] = useState("");
+  const [newUser, setNewUser] = useState("");
   const onlineStatus = useOnlineStatus();
 
   const RestaurantCardLabel = withLabelRestaurantCard(RestaurantCard);
@@ -32,6 +35,8 @@ const Body = () => {
         ?.restaurants
     );
   }
+
+  console.log(newUser);
 
   return (
     <>
@@ -85,6 +90,24 @@ const Body = () => {
               onClick={() => setListOfRestaurants(allRestaurants)}
             >
               Clear filter
+            </button>
+            <span className="ml-10">Change user:</span>
+            <input
+              placeholder="Enter Username..."
+              className="m-2 p-2  max-w-md border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400 shadow-sm transition duration-200"
+              type="Search"
+              value={newUser}
+              onChange={(e) => {
+                setNewUser(e.target.value);
+              }}
+            />
+            <button
+              className="m-2 px-4 py-2 bg-pink-500 text-white rounded hover:bg-pink-600 transition"
+              onClick={() => {
+                setUserName(newUser);
+              }}
+            >
+              Switch User
             </button>
           </div>
           {listOfRestaurants.length === 0 ? (

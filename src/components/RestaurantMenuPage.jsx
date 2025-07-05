@@ -6,6 +6,7 @@ import RestaurantCategory from "./RestaurantCategory";
 
 export default function RestaurantMenuPage() {
   const [vegOnly, setVegOnly] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(null);
 
   const { resId } = useParams();
 
@@ -57,6 +58,8 @@ export default function RestaurantMenuPage() {
                   index={index}
                   vegOnly={vegOnly}
                   category={category}
+                  activeIndex={activeIndex}
+                  setActiveIndex={setActiveIndex}
                 />
               );
             })}

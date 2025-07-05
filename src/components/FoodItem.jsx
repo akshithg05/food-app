@@ -1,7 +1,6 @@
 import { CDN_URL } from "../utils/constants";
 
 export default function FoodItem({ foodItem }) {
-  console.log(foodItem);
   return (
     <div className="my-3 border-b border-gray-400 pb-3 bg-gray-100  p-3">
       <div className="flex justify-between items-center">
