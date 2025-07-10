@@ -36,8 +36,6 @@ const Body = () => {
     );
   }
 
-  console.log(newUser);
-
   return (
     <>
       {!onlineStatus ? (

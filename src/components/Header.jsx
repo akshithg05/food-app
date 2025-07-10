@@ -3,12 +3,16 @@ import { useState, useContext } from "react";
 import { Link } from "react-router";
 import useOnlineStatus from "../hooks/useOnlineStatus";
 import UserContext from "../context/UserContext";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const { loggedInUser } = useContext(UserContext);
 
   const isOnline = useOnlineStatus();
+
+  const cartItems = useSelector((store) => store?.cart?.items);
+
   return (
     <div className="flex justify-between sm:bg-pink-100 bg-amber-100 shadow-lg">
       <div className="logo-container">
@@ -32,8 +36,8 @@ const Header = () => {
           <li className="hover:bg-pink-300 rounded-lg flex items-center justify-center p-2">
             <Link to="/contact">Contact us</Link>
           </li>
-          <li className="hover:bg-pink-300 rounded-lg flex items-center justify-center p-2">
-            Cart
+          <li className="hover:bg-pink-300 rounded-lg flex items-center justify-center p-2 font-bold text-lg">
+            Cart - ({cartItems.length}) items
           </li>
           <li className="hover:bg-pink-300 rounded-lg flex items-center justify-center p-2">
             <button onClick={() => setIsLoggedIn(!isLoggedIn)}>

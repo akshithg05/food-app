@@ -1,6 +1,13 @@
+import { addItem } from "../store/cartSlice";
 import { CDN_URL } from "../utils/constants";
+import { useDispatch } from "react-redux";
 
 export default function FoodItem({ foodItem }) {
+  const dispatch = useDispatch();
+
+  function handleAddItem(name) {
+    dispatch(addItem(name));
+  }
   return (
     <div className="my-3 border-b border-gray-400 pb-3 bg-gray-100  p-3">
       <div className="flex justify-between items-center">
@@ -30,7 +37,10 @@ export default function FoodItem({ foodItem }) {
             alt={foodItem?.card?.info?.name}
           />
           <div className="absolute bottom-2 left-1/2  -translate-x-1/2">
-            <button className="px-4 py-2 bg-green-100 shadow-lg rounded-lg text-sm font-semibold">
+            <button
+              className="px-4 py-2 bg-green-100 shadow-lg rounded-lg text-sm font-semibold"
+              onClick={() => handleAddItem(foodItem)}
+            >
               Add +
             </button>
           </div>

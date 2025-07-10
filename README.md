@@ -20,3 +20,12 @@ Two types of export import -
 
 Normal JS utility funcitons written in the react library, written by facebook devs,.
 2 most Important hooks - useState() and useEffect()
+
+# Redux
+
+- Install @reduxjs/toolkit and react-redux
+- Build our store
+- Connect our store to our app
+- Create cart slice
+- Dispatch an action
+- Selector

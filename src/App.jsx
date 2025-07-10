@@ -8,6 +8,8 @@ import RestaurantMenuPage from "./components/RestaurantMenuPage";
 import { lazy, Suspense, useEffect, useState, useContext } from "react";
 import Shimmer from "./components/Shimmer";
 import UserContext from "./context/UserContext";
+import { Provider } from "react-redux";
+import appStore from "./store/appStore";
 
 const AppLayout = () => {
   const { loggedInUser } = useContext(UserContext);
@@ -28,13 +30,15 @@ const AppLayout = () => {
   }, []);
 
   return (
-    <UserContext.Provider value={{ loggedInUser: userName , setUserName}}>
-      <>
-        <Header />
-        <Outlet />{" "}
-        {/*  This will be replaced by the children of the AppLayout based on the path*/}
-      </>
-    </UserContext.Provider>
+    <Provider store={appStore}>
+      <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
+        <>
+          <Header />
+          <Outlet />{" "}
+          {/*  This will be replaced by the children of the AppLayout based on the path*/}
+        </>
+      </UserContext.Provider>
+    </Provider>
   );
 };
 
