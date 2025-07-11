@@ -41,7 +41,7 @@ export default function RestaurantCategory({
           <ul>
             {filteredItems.map((foodItem) => (
               <li className="px-2" key={foodItem?.card?.info?.id}>
-                <FoodItem foodItem={foodItem} />
+                <FoodItem foodItem={foodItem} showButton={true} />
               </li>
             ))}
           </ul>

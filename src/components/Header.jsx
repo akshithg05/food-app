@@ -37,7 +37,7 @@ const Header = () => {
             <Link to="/contact">Contact us</Link>
           </li>
           <li className="hover:bg-pink-300 rounded-lg flex items-center justify-center p-2 font-bold text-lg">
-            Cart - ({cartItems.length}) items
+            <Link to="/cart"> Cart - ({cartItems.length}) items</Link>
           </li>
           <li className="hover:bg-pink-300 rounded-lg flex items-center justify-center p-2">
             <button onClick={() => setIsLoggedIn(!isLoggedIn)}>

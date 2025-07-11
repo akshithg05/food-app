@@ -10,6 +10,7 @@ import Shimmer from "./components/Shimmer";
 import UserContext from "./context/UserContext";
 import { Provider } from "react-redux";
 import appStore from "./store/appStore";
+import Cart from "./components/Cart";
 
 const AppLayout = () => {
   const { loggedInUser } = useContext(UserContext);
@@ -74,6 +75,10 @@ const appRouter = createBrowserRouter([
             <Grocery />
           </Suspense>
         ),
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
     ],
     errorElement: <Error />,

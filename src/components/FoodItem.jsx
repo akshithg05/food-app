@@ -1,13 +1,23 @@
-import { addItem } from "../store/cartSlice";
+import { addItem, removeItem } from "../store/cartSlice";
 import { CDN_URL } from "../utils/constants";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
-export default function FoodItem({ foodItem }) {
+export default function FoodItem({ foodItem, showButton }) {
   const dispatch = useDispatch();
 
   function handleAddItem(name) {
     dispatch(addItem(name));
   }
+
+  function handleRemoveItem(name) {
+    dispatch(removeItem(name));
+  }
+
+  const cartItems = useSelector((store) => store?.cart?.items);
+  const foodItemCount = cartItems.filter(
+    (item) => item?.card?.info?.name === foodItem?.card?.info.name
+  ).length;
+
   return (
     <div className="my-3 border-b border-gray-400 pb-3 bg-gray-100  p-3">
       <div className="flex justify-between items-center">
@@ -36,14 +46,27 @@ export default function FoodItem({ foodItem }) {
             src={CDN_URL + foodItem?.card?.info?.imageId}
             alt={foodItem?.card?.info?.name}
           />
-          <div className="absolute bottom-2 left-1/2  -translate-x-1/2">
-            <button
-              className="px-4 py-2 bg-green-100 shadow-lg rounded-lg text-sm font-semibold"
-              onClick={() => handleAddItem(foodItem)}
-            >
-              Add +
-            </button>
-          </div>
+          {showButton && (
+            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex items-center gap-3 px-4 py-2 bg-green-100 hover:bg-green-200 shadow-xl rounded-full text-sm font-semibold transition-all duration-200">
+              <button
+                className="cursor-pointer"
+                onClick={() => handleRemoveItem(foodItem)}
+              >
+                −
+              </button>
+
+              <span className="min-w-[20px] text-center text-green-800 font-bold">
+                {foodItemCount}
+              </span>
+
+              <button
+                className="cursor-pointer"
+                onClick={() => handleAddItem(foodItem)}
+              >
+                +
+              </button>
+            </div>
+          )}
         </span>
       </div>
     </div>
