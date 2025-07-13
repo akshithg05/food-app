@@ -46,3 +46,6 @@ Normal JS utility funcitons written in the react library, written by facebook de
 - Now, the config will be picked from babel.config.js
 - npx create-jest, and enter the (js dom testing env)
 - Install jsdom library (as we are using jest verion above 28)
+- Install @babel/preset-react to enable jsx and make it work in react.
+- Include @babel/preset-react in babel.config.js to enable jsx in testing.
+- Install @testing-library/jest-dom
