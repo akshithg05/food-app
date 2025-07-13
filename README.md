@@ -29,3 +29,20 @@ Normal JS utility funcitons written in the react library, written by facebook de
 - Create cart slice
 - Dispatch an action
 - Selector
+
+# Types of testing
+
+- Unit testing
+- Integration testing
+- End to End testing - e2e testing
+
+# Setting up testing in the app
+
+- Install React testing library
+- Install Jest
+- Install babel dependencies for jest, from jest docs
+- Add babel config file for jest
+- Configure .parcelrc file to override default babel transpilation, see parcel docs, parcel/javascript/#babel
+- Now, the config will be picked from babel.config.js
+- npx create-jest, and enter the (js dom testing env)
+- Install jsdom library (as we are using jest verion above 28)
