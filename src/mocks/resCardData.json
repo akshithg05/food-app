@@ -1,0 +1,84 @@
+{
+    "info": {
+        "id": "597395",
+        "name": "Taco Bell",
+        "cloudinaryImageId": "RX_THUMBNAIL/IMAGES/VENDOR/2025/7/10/158d78b7-263c-4e8f-9953-7ab75e29bbad_597395.JPG",
+        "locality": "4th Block",
+        "areaName": "Jayanagar",
+        "costForTwo": "₹300 for two",
+        "cuisines": [
+            "Mexican",
+            "Fast Food",
+            "Snacks"
+        ],
+        "avgRating": 4.4,
+        "parentId": "1557",
+        "avgRatingString": "4.4",
+        "totalRatingsString": "3.1K+",
+        "sla": {
+            "deliveryTime": 34,
+            "lastMileTravel": 7,
+            "serviceability": "SERVICEABLE",
+            "slaString": "30-35 mins",
+            "lastMileTravelString": "7.0 km",
+            "iconType": "ICON_TYPE_EMPTY"
+        },
+        "availability": {
+            "nextCloseTime": "2025-07-16 01:00:00",
+            "opened": true
+        },
+        "badges": {
+            "imageBadges": [
+                {
+                    "imageId": "Ratnesh_Badges/Rx_Awards_2025/Global%20Flavours.png",
+                    "description": "Delivery!"
+                }
+            ]
+        },
+        "isOpen": true,
+        "type": "F",
+        "badgesV2": {
+            "entityBadges": {
+                "imageBased": {
+                    "badgeObject": [
+                        {
+                            "attributes": {
+                                "description": "Delivery!",
+                                "imageId": "Ratnesh_Badges/Rx_Awards_2025/Global%20Flavours.png"
+                            }
+                        }
+                    ]
+                },
+                "textBased": {},
+                "textExtendedBadges": {}
+            }
+        },
+        "aggregatedDiscountInfoV3": {
+            "header": "ITEMS",
+            "subHeader": "AT ₹59"
+        },
+        "differentiatedUi": {
+            "displayType": "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+            "differentiatedUiMediaDetails": {
+                "lottie": {},
+                "video": {}
+            }
+        },
+        "reviewsSummary": {},
+        "displayType": "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+        "restaurantOfferPresentationInfo": {},
+        "externalRatings": {
+            "aggregatedRating": {
+                "rating": "--"
+            }
+        },
+        "ratingsDisplayPreference": "RATINGS_DISPLAY_PREFERENCE_SHOW_SWIGGY"
+    },
+    "analytics": {
+        "context": "seo-data-49d7bba4-a928-4387-9546-f3d5dff8e464"
+    },
+    "cta": {
+        "link": "https://www.swiggy.com/city/bangalore/taco-bell-4th-block-jayanagar-rest597395",
+        "type": "WEBLINK"
+    }
+}
