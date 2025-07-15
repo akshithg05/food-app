@@ -18,7 +18,8 @@
     "babel-jest": "^30.0.4",
     "jest": "^30.0.4",
     "jest-environment-jsdom": "^30.0.4",
-    "parcel": "^2.15.2"
+    "parcel": "^2.15.2",
+    "text-encoding": "^0.7.0"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
