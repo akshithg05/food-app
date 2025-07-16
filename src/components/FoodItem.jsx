@@ -49,6 +49,7 @@ export default function FoodItem({ foodItem, showButton }) {
           {showButton && (
             <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex items-center gap-3 px-4 py-2 bg-green-100 hover:bg-green-200 shadow-xl rounded-full text-sm font-semibold transition-all duration-200">
               <button
+                data-testid="minus"
                 className="cursor-pointer"
                 onClick={() => handleRemoveItem(foodItem)}
               >

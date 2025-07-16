@@ -13,7 +13,9 @@ export default function Cart() {
   return (
     <div className=" my-3 mx-40">
       <div className="flex justify-between ">
-        <h1 className=" mx-25 text-4xl font-bold">Cart</h1>
+        <h1 data-testid="cart" className=" mx-25 text-4xl font-bold">
+          Cart
+        </h1>
         <button
           onClick={clearTheCart}
           className="p-2 rounded-xl cursor-pointer bg-red-200  font-bold hover:bg-red-400 transition"

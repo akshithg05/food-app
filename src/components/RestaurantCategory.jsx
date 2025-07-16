@@ -40,7 +40,11 @@ export default function RestaurantCategory({
         {activeIndex === index && (
           <ul>
             {filteredItems.map((foodItem) => (
-              <li className="px-2" key={foodItem?.card?.info?.id}>
+              <li
+                data-testid="food-items"
+                className="px-2"
+                key={foodItem?.card?.info?.id}
+              >
                 <FoodItem foodItem={foodItem} showButton={true} />
               </li>
             ))}

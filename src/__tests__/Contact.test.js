@@ -3,6 +3,19 @@ import Contact from "../components/Contact";
 import "@testing-library/jest-dom";
 
 describe("Contact us page test cases", () => {
+  beforeAll(() => {
+    console.log("This is called before all test cases in this block");
+  });
+  beforeEach(() => {
+    console.log("This will run before each test case in the describe block");
+  });
+  afterAll(() => {
+    console.log("This is called After all test cases in this block");
+  });
+  afterEach(() => {
+    console.log("This will run after each test case in the describe block");
+  });
+
   test("should load Contact page", () => {
     render(<Contact />); // This will be rendered to js dom
     const heading = screen.getByRole("heading");
@@ -17,6 +30,8 @@ describe("Contact us page test cases", () => {
     expect(button).toBeInTheDocument();
     expect(submitText).toBeInTheDocument();
   });
+
+  // Test keyword can also be replaced with 'it', does the same function
 
   it("Should load input ", () => {
     render(<Contact />);
