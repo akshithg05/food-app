@@ -13,7 +13,9 @@ export default function useRestaurantMenu(resId) {
   async function fetchMenu() {
     try {
       setLoading(true);
-      const menu = await fetch(PROXY_URL + getMenuUrl(resId));
+      const menu = await fetch(
+        PROXY_URL + encodeURIComponent(getMenuUrl(resId))
+      );
 
       const menuJson = await menu.json();
       setData(menuJson);
